@@ -1,0 +1,28 @@
+.cell {
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+.cell:hover {
+  opacity: 0.8;
+}
+
+.cell-wall {
+  border-color: #1a202c;
+}
+
+.cell-start {
+  border-color: #38a169;
+  box-shadow: inset 0 0 0 2px #38a169;
+}
+
+.cell-end {
+  border-color: #dd6b20;
+  box-shadow: inset 0 0 0 2px #dd6b20;
+}
+
+.cell-path {
+  border-color: #3182ce;
+}
