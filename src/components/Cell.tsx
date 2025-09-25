@@ -1,6 +1,5 @@
 import { cn } from '@/lib/utils';
 import React from 'react';
-import { GRID_CONFIG } from '../constants';
 import type { Cell as CellType } from '../types';
 import { CellType as CellTypeEnum } from '../types';
 
@@ -18,7 +17,7 @@ const Cell: React.FC<CellProps> = ({
   onMouseUp
 }) => {
   const getCellClasses = (cell: CellType) => {
-    const baseClasses = "border border-gray-200 cursor-pointer transition-all duration-150 hover:opacity-80";
+    const baseClasses = "border-[0.5px] border-gray-300 cursor-pointer transition-all duration-150 hover:opacity-80 w-full h-full aspect-square min-h-[8px] min-w-[8px] touch-manipulation select-none";
 
     if (cell.type === CellTypeEnum.START) {
       return cn(baseClasses, "bg-green-500 border-green-600");
@@ -39,20 +38,24 @@ const Cell: React.FC<CellProps> = ({
       case CellTypeEnum.WALL:
         return cn(baseClasses, "bg-slate-800 border-slate-700");
       default:
-        return cn(baseClasses, "bg-white hover:bg-gray-50");
+        return cn(baseClasses, "bg-white hover:bg-gray-50 active:bg-gray-100");
     }
   };
 
   return (
     <div
       className={getCellClasses(cell)}
-      style={{
-        width: `${GRID_CONFIG.CELL_SIZE}px`,
-        height: `${GRID_CONFIG.CELL_SIZE}px`,
-      }}
       onMouseDown={() => onMouseDown(cell.row, cell.col)}
       onMouseEnter={() => onMouseEnter(cell.row, cell.col)}
       onMouseUp={onMouseUp}
+      onTouchStart={(e) => {
+        e.preventDefault();
+        onMouseDown(cell.row, cell.col);
+      }}
+      onTouchEnd={(e) => {
+        e.preventDefault();
+        onMouseUp();
+      }}
     />
   );
 };

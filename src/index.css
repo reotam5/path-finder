@@ -169,7 +169,31 @@ button:disabled {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Enhanced mobile grid scaling */
+@media (max-width: 640px) {
+  .grid-container {
+    padding: 0.5rem !important;
+  }
+
+  .grid-cell {
+    min-height: 10px !important;
+    min-width: 10px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-container {
+    padding: 0.25rem !important;
+  }
+
+  .grid-cell {
+    min-height: 8px !important;
+    min-width: 8px !important;
   }
 }

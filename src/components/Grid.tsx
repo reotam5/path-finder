@@ -242,13 +242,13 @@ const Grid: React.FC<GridProps> = ({
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto p-6 space-y-8">
+    <div className="w-full mx-auto p-3 sm:p-6 space-y-4 sm:space-y-8">
       {/* Header with Status */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex-1"></div>
           <div className="text-center">
-            <h2 className="text-2xl font-bold">{t.app.title}</h2>
+            <h2 className="text-xl sm:text-2xl font-bold">{t.app.title}</h2>
             {isRunning && (
               <Badge variant="secondary" className="animate-pulse mt-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
@@ -260,21 +260,21 @@ const Grid: React.FC<GridProps> = ({
             <LanguageSelector />
           </div>
         </div>
-        <p className="text-muted-foreground text-sm text-center">
+        <p className="text-muted-foreground text-xs sm:text-sm text-center">
           {t.app.subtitle}
         </p>
       </div>
 
       {/* Controls */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
         {/* Drawing Tools */}
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
               <MousePointer className="w-4 h-4" />
               {t.tools.drawingToolsTitle}
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="text-xs sm:text-sm">
               {t.tools.drawingToolsDescription}
             </CardDescription>
           </CardHeader>
@@ -283,38 +283,38 @@ const Grid: React.FC<GridProps> = ({
               type="single"
               value={selectedTool}
               onValueChange={(value) => value && setSelectedTool(value as ToolType)}
-              className="grid grid-cols-4 gap-2"
+              className="flex flex-wrap"
             >
               <ToggleGroupItem
                 value="start"
-                className="flex flex-col gap-1 h-auto py-3"
+                className="flex flex-col gap-1 h-auto py-2 sm:py-3"
                 disabled={isRunning}
               >
-                <MapPin className="w-4 h-4 text-green-600" />
+                <MapPin className="w-3 h-3 sm:w-4 sm:h-4 text-green-600" />
                 <span className="text-xs">{t.tools.start}</span>
               </ToggleGroupItem>
               <ToggleGroupItem
                 value="end"
-                className="flex flex-col gap-1 h-auto py-3"
+                className="flex flex-col gap-1 h-auto py-2 sm:py-3"
                 disabled={isRunning}
               >
-                <Target className="w-4 h-4 text-red-600" />
+                <Target className="w-3 h-3 sm:w-4 sm:h-4 text-red-600" />
                 <span className="text-xs">{t.tools.end}</span>
               </ToggleGroupItem>
               <ToggleGroupItem
                 value="wall"
-                className="flex flex-col gap-1 h-auto py-3"
+                className="flex flex-col gap-1 h-auto py-2 sm:py-3"
                 disabled={isRunning}
               >
-                <Square className="w-4 h-4" />
+                <Square className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span className="text-xs">{t.tools.wall}</span>
               </ToggleGroupItem>
               <ToggleGroupItem
                 value="eraser"
-                className="flex flex-col gap-1 h-auto py-3"
+                className="flex flex-col gap-1 h-auto py-2 sm:py-3"
                 disabled={isRunning}
               >
-                <Eraser className="w-4 h-4" />
+                <Eraser className="w-3 h-3 sm:w-4 sm:h-4" />
                 <span className="text-xs">{t.tools.eraser}</span>
               </ToggleGroupItem>
             </ToggleGroup>
@@ -323,23 +323,23 @@ const Grid: React.FC<GridProps> = ({
 
             {/* Action Buttons */}
             <div className="space-y-2">
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <Button
                   onClick={clearPath}
                   variant="outline"
-                  className="flex-1"
+                  className="flex-1 text-xs sm:text-sm"
                   disabled={isRunning}
                 >
-                  <Trash2 className="w-4 h-4 mr-2" />
+                  <Trash2 className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                   {t.actions.clearPath}
                 </Button>
                 <Button
                   onClick={clearGrid}
                   variant="outline"
-                  className="flex-1"
+                  className="flex-1 text-xs sm:text-sm"
                   disabled={isRunning}
                 >
-                  <RotateCcw className="w-4 h-4 mr-2" />
+                  <RotateCcw className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
                   {t.actions.resetGrid}
                 </Button>
               </div>
@@ -350,11 +350,11 @@ const Grid: React.FC<GridProps> = ({
         {/* Algorithm Selection */}
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
               <Target className="w-4 h-4" />
               {t.algorithms.title}
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="text-xs sm:text-sm">
               {t.algorithms.description}
             </CardDescription>
           </CardHeader>
@@ -364,31 +364,31 @@ const Grid: React.FC<GridProps> = ({
               onValueChange={(value) => setSelectedAlgorithm(value as Algorithm)}
               disabled={isRunning}
             >
-              <SelectTrigger className="w-full">
+              <SelectTrigger className="w-full text-xs sm:text-sm">
                 <SelectValue placeholder={t.algorithms.selectPlaceholder} />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value={Algorithm.BFS}>
                   <div className="flex flex-col items-start">
-                    <span>{t.algorithms.bfs.name}</span>
+                    <span className="text-xs sm:text-sm">{t.algorithms.bfs.name}</span>
                     <span className="text-xs text-muted-foreground">{t.algorithms.bfs.description}</span>
                   </div>
                 </SelectItem>
                 <SelectItem value={Algorithm.DFS}>
                   <div className="flex flex-col items-start">
-                    <span>{t.algorithms.dfs.name}</span>
+                    <span className="text-xs sm:text-sm">{t.algorithms.dfs.name}</span>
                     <span className="text-xs text-muted-foreground">{t.algorithms.dfs.description}</span>
                   </div>
                 </SelectItem>
                 <SelectItem value={Algorithm.A_STAR}>
                   <div className="flex flex-col items-start">
-                    <span>{t.algorithms.aStar.name}</span>
+                    <span className="text-xs sm:text-sm">{t.algorithms.aStar.name}</span>
                     <span className="text-xs text-muted-foreground">{t.algorithms.aStar.description}</span>
                   </div>
                 </SelectItem>
                 <SelectItem value={Algorithm.BIDIRECTIONAL}>
                   <div className="flex flex-col items-start">
-                    <span>{t.algorithms.bidirectional.name}</span>
+                    <span className="text-xs sm:text-sm">{t.algorithms.bidirectional.name}</span>
                     <span className="text-xs text-muted-foreground">{t.algorithms.bidirectional.description}</span>
                   </div>
                 </SelectItem>
@@ -399,9 +399,9 @@ const Grid: React.FC<GridProps> = ({
               onClick={runPathfinding}
               disabled={isRunning || !startPosition || !endPosition}
               size="lg"
-              className="w-full"
+              className="w-full text-xs sm:text-sm"
             >
-              <Play className="w-4 h-4 mr-2" />
+              <Play className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
               {isRunning ? t.actions.running : t.actions.findPath}
             </Button>
           </CardContent>
@@ -410,30 +410,52 @@ const Grid: React.FC<GridProps> = ({
 
       {/* Grid */}
       <Card className="overflow-hidden">
-        <CardContent className="p-6">
-          <div className="flex justify-center">
-            <div
-              className={cn(
-                "grid gap-0 border-2 border-border rounded-lg overflow-hidden",
-                "shadow-lg bg-background"
-              )}
-              style={{
-                gridTemplateColumns: `repeat(${cols}, ${GRID_CONFIG.CELL_SIZE}px)`,
-                gridTemplateRows: `repeat(${rows}, ${GRID_CONFIG.CELL_SIZE}px)`,
-              }}
-              onMouseLeave={() => isDrawingRef.current = false}
-            >
-              {grid.map((row, rowIndex) =>
-                row.map((cell, colIndex) => (
-                  <Cell
-                    key={`${rowIndex}-${colIndex}`}
-                    cell={cell}
-                    onMouseDown={handleMouseDown}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseUp={handleMouseUp}
-                  />
-                ))
-              )}
+        <CardContent className="p-2 sm:p-6">
+          <div className="w-full">
+            <div className="flex justify-center">
+              <div
+                className={cn(
+                  "grid gap-0 border-2 border-border rounded-lg overflow-hidden",
+                  "shadow-lg bg-background w-full",
+                  // Responsive grid sizing
+                  "max-w-full"
+                )}
+                style={{
+                  gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
+                  gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
+                  // Dynamic sizing based on viewport - ensures 100% visibility
+                  width: `min(100vw - 1rem, 100%, ${cols * 25}px)`, // Scale to fit viewport width with margin
+                  height: `min(70vh, calc((100vw - 1rem) * ${rows} / ${cols}), ${rows * 25}px)`, // Maintain aspect ratio
+                  maxWidth: '100%', // Ensure it never overflows
+                  maxHeight: '70vh' // Reasonable height limit
+                }}
+                onMouseLeave={() => isDrawingRef.current = false}
+                // Add touch support for mobile
+                onTouchStart={(e) => {
+                  e.preventDefault();
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  const touch = e.touches[0];
+                  const x = touch.clientX - rect.left;
+                  const y = touch.clientY - rect.top;
+                  const col = Math.floor((x / rect.width) * cols);
+                  const row = Math.floor((y / rect.height) * rows);
+                  if (row >= 0 && row < rows && col >= 0 && col < cols) {
+                    handleMouseDown(row, col);
+                  }
+                }}
+              >
+                {grid.map((row, rowIndex) =>
+                  row.map((cell, colIndex) => (
+                    <Cell
+                      key={`${rowIndex}-${colIndex}`}
+                      cell={cell}
+                      onMouseDown={handleMouseDown}
+                      onMouseEnter={handleMouseEnter}
+                      onMouseUp={handleMouseUp}
+                    />
+                  ))
+                )}
+              </div>
             </div>
           </div>
         </CardContent>

@@ -8,6 +8,7 @@ const languageNames: Record<Language, string> = {
   es: 'Español',
   fr: 'Français',
   ja: '日本語',
+  zh: '中文',
 };
 
 export const LanguageSelector: React.FC = () => {

@@ -237,8 +237,54 @@ export const jaTranslations: Translations = {
   },
 };
 
+// Mandarin Chinese translations
+export const zhTranslations: Translations = {
+  app: {
+    title: '路径查找可视化器',
+    subtitle: '选择您的工具和算法，然后观看路径查找的魔力',
+  },
+  status: {
+    running: '运行中',
+  },
+  tools: {
+    start: '起点',
+    end: '终点',
+    wall: '墙壁',
+    eraser: '橡皮擦',
+    drawingToolsTitle: '绘图工具和操作',
+    drawingToolsDescription: '选择工具来修改网格并管理您的工作区',
+  },
+  actions: {
+    clearPath: '清除路径',
+    resetGrid: '重置网格',
+    findPath: '查找路径',
+    running: '运行中...',
+  },
+  algorithms: {
+    title: '算法和执行',
+    description: '选择您的路径查找算法并运行可视化',
+    selectPlaceholder: '选择算法',
+    bfs: {
+      name: '广度优先搜索',
+      description: '保证最短路径',
+    },
+    dfs: {
+      name: '深度优先搜索',
+      description: '优先深度探索',
+    },
+    aStar: {
+      name: 'A*搜索',
+      description: '最优且高效',
+    },
+    bidirectional: {
+      name: '双向搜索',
+      description: '从两端搜索',
+    },
+  },
+};
+
 // Supported languages
-export type Language = 'en' | 'es' | 'fr' | 'ja';
+export type Language = 'en' | 'es' | 'fr' | 'ja' | 'zh';
 
 // All translations mapped by language
 export const translations: Record<Language, Translations> = {
@@ -246,6 +292,7 @@ export const translations: Record<Language, Translations> = {
   es: esTranslations,
   fr: frTranslations,
   ja: jaTranslations,
+  zh: zhTranslations,
 };
 
 // Default language
